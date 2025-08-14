@@ -1,32 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'app/routes/app_pages.dart';
-import 'app/routes/app_routes.dart';
-import 'app/bindings/initial_binding.dart';
-import 'core/constants/app_theme.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+import 'core/theme/app_theme.dart';
+import 'core/routes/app_routes.dart';
+import 'features/speedboat/presentation/controllers/speedboat_controller.dart';
+import 'features/packages/presentation/controllers/package_detail_controller.dart';
+import 'features/speedboat/data/repositories/speedboat_repo_impl.dart';
+import 'features/speedboat/data/datasources/speedboat_remote_mock.dart';
+import 'features/packages/data/repositories/package_repo_impl.dart';
+import 'features/packages/data/datasources/package_remote_mock.dart';
 
-  // Initialize GetStorage
-  await GetStorage.init();
-
+void main() {
+  final speedboatRepo = SpeedboatRepoImpl(SpeedboatRemoteMock());
+  final packageRepo = PackageRepoImpl(PackageRemoteMock());
+  Get.put(SpeedboatController(repo: speedboatRepo));
+  Get.put(PackageDetailController(repo: packageRepo));
   runApp(const TrevelinApp());
 }
 
 class TrevelinApp extends StatelessWidget {
-  const TrevelinApp({Key? key}) : super(key: key);
+  const TrevelinApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Trevelin',
-      theme: AppTheme.lightTheme,
-      initialRoute: AppRoutes.splash,
-      getPages: AppPages.routes,
-      initialBinding: InitialBinding(),
-      debugShowCheckedModeBanner: false,
+      theme: AppTheme.light,
+      getPages: AppRoutes.pages,
+      initialRoute: AppRoutes.speedboat,
     );
   }
 }
