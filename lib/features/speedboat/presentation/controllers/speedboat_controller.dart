@@ -52,10 +52,8 @@ class SpeedboatController extends GetxController {
       seatIds: selectedSeatIds.toList(),
       paxCount: selectedSeatIds.length,
     );
-    if (!createRes.isSuccess) return;
-    final confirmRes = await repo.confirmBooking(createRes.data!.id);
-    if (confirmRes.isSuccess) {
-      booking.value = confirmRes.data;
+    if (createRes.isSuccess) {
+      booking.value = createRes.data;
     }
   }
 }
