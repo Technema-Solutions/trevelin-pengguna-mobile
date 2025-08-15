@@ -1,0 +1,12 @@
+{
+  "appTitle": "Trevelin",
+  "bookNow": "Book now",
+  "payNow": "Pay now",
+  "feedbackTitle": "Feedback",
+  "errorGeneric": "Something went wrong",
+  "subjectLabel": "Subject",
+  "descriptionLabel": "Description",
+  "includeLogsLabel": "Include logs",
+  "feedbackThanks": "Thanks for your feedback!",
+  "submitLabel": "Submit"
+}

@@ -1,0 +1,4 @@
+storeFile=keystore/trevelin.jks
+storePassword=changeit
+keyAlias=trevelin
+keyPassword=changeit
