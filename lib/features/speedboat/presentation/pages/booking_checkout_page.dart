@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/speedboat_controller.dart';
+import '../../../../core/routes/app_routes.dart';
 
 /// Checkout page collecting user info and confirming booking.
 class BookingCheckoutPage extends StatefulWidget {
@@ -45,7 +46,7 @@ class _BookingCheckoutPageState extends State<BookingCheckoutPage> {
                   if (!_formKey.currentState!.validate()) return;
                   await controller.confirmBooking();
                   if (controller.booking.value != null) {
-                    Get.offAllNamed('/speedboat/success');
+                    Get.toNamed(AppRoutes.paymentMethod);
                   }
                 },
                 child: const Text('Confirm'),
