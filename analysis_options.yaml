@@ -33,7 +33,6 @@ analyzer:
     - "**/*.g.dart"
 linter:
   rules:
-    always_use_package_imports: true
     avoid_print: true
     prefer_final_locals: true
     prefer_const_constructors: true
