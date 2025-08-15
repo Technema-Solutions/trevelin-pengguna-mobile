@@ -27,15 +27,20 @@ class SeatGrid extends StatelessWidget {
         } else {
           color = Colors.white;
         }
-        return GestureDetector(
-          onTap: seat.status == SeatStatus.sold ? null : () => onTap(seat.id),
-          child: Container(
-            margin: const EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              color: color,
-              border: Border.all(color: Colors.black),
+        return Semantics(
+          label: 'Seat ${seat.code}',
+          button: true,
+          enabled: seat.status != SeatStatus.sold,
+          child: GestureDetector(
+            onTap: seat.status == SeatStatus.sold ? null : () => onTap(seat.id),
+            child: Container(
+              margin: const EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                color: color,
+                border: Border.all(color: Colors.black),
+              ),
+              child: Center(child: Text(seat.code)),
             ),
-            child: Center(child: Text(seat.code)),
           ),
         );
       },

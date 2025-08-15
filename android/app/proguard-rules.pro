@@ -1,0 +1,5 @@
+-keep class io.flutter.** { *; }
+-keep class okhttp3.** { *; }
+-keep class okio.** { *; }
+-keep class retrofit2.** { *; }
+-dontwarn javax.annotation.**

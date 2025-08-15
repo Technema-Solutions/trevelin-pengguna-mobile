@@ -13,4 +13,5 @@ class LocalStore {
 
   T? read<T>(String key) => _box.read<T>(key);
   Future<void> write(String key, dynamic value) => _box.write(key, value);
+  Future<void> remove(String key) => _box.remove(key);
 }

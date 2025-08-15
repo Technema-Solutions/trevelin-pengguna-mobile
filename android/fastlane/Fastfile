@@ -1,0 +1,7 @@
+# Placeholder Fastlane configuration for Android builds.
+platform :android do
+  desc "Build release AAB"
+  lane :build do
+    sh "flutter build appbundle --release"
+  end
+end

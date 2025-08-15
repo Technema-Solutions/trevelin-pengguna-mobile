@@ -7,6 +7,10 @@ import '../../features/speedboat/presentation/pages/booking_success_page.dart';
 import '../../features/packages/presentation/pages/package_detail_page.dart';
 import '../../features/payments/presentation/pages/payment_method_page.dart';
 import '../../features/payments/presentation/pages/payment_pending_page.dart';
+import '../../features/feedback/presentation/pages/feedback_page.dart';
+import '../../features/feedback/presentation/controllers/feedback_controller.dart';
+import '../../features/feedback/data/feedback_sender.dart';
+import '../../features/debugtools/presentation/pages/debug_menu_page.dart';
 
 /// Application route names and GetX pages.
 class AppRoutes {
@@ -20,6 +24,8 @@ class AppRoutes {
   static const String paymentMethod = '/payment/method';
   static const String paymentPending = '/payment/pending';
   static const String packageDetail = '/package/:id';
+  static const String feedback = '/feedback';
+  static const String debugMenu = '/debug';
 
   /// List of [GetPage] for GetMaterialApp.
   static final List<GetPage<dynamic>> pages = [
@@ -31,5 +37,13 @@ class AppRoutes {
     GetPage(name: paymentMethod, page: () => const PaymentMethodPage()),
     GetPage(name: paymentPending, page: () => const PaymentPendingPage()),
     GetPage(name: packageDetail, page: () => const PackageDetailPage()),
+    GetPage(
+      name: feedback,
+      page: () => const FeedbackPage(),
+      binding: BindingsBuilder(() {
+        Get.put(FeedbackController(EmailFeedbackSender()));
+      }),
+    ),
+    GetPage(name: debugMenu, page: () => const DebugMenuPage()),
   ];
 }
